@@ -209,6 +209,16 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         //throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             velocityY = -10;
+            if(gameOver){
+                //restart the game and reset everything
+                bird.y = birdY;
+                velocityY = 0;
+                pipes.clear();
+                score = 0;
+                gameOver = false;
+                gameLoop.start();
+                placePipesTimer.start();
+            }
         }
     }
 
